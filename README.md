@@ -1,3 +1,5 @@
+# Amida Client Boilerplate
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
@@ -1211,6 +1213,22 @@ You can turn your React app into a [Progressive Web App](https://developers.goog
 ## Deployment
 
 `npm run build` creates a `build` directory with a production build of your app. Set up your favourite HTTP server so that a visitor to your site is served `index.html`, and requests to static paths like `/static/js/main.<hash>.js` are served with the contents of the `/static/js/main.<hash>.js` file.
+
+### Docker
+
+To deploy with nginx via Docker, first build the Docker image:
+
+```sh
+docker build -t client .
+```
+
+Then run the server:
+
+```sh
+docker run -p 80:80 client
+```
+
+This option is based on [docker-nginx](https://github.com/KyleAMathews/docker-nginx) and includes many configuration options, including SSL.
 
 ### Static Server
 
