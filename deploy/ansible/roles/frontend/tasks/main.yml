@@ -23,7 +23,6 @@
     repo: git@github.com:amida-tech/client-boilerplate.git
     accept_hostkey: yes
     force: yes
-  sudo: no
 
 - name:  Install node-gyp
   sudo: yes
