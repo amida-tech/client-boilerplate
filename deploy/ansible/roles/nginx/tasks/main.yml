@@ -1,0 +1,26 @@
+---
+#file: roles/nginx/tasks/main.yml
+
+- name: Update to latest version of nginx
+  yum: name="nginx" state="latest"
+
+- name: Prevent Selinux errors
+  sudo: yes
+  command: setsebool httpd_can_network_connect on -P
+
+- name: Start nginx
+  sudo: yes
+  command: systemctl start nginx
+
+- name: Enable nginx to start on system boot
+  sudo: yes
+  command: systemctl enable nginx
+
+# - name: copy site conf file
+#   template:
+#     src: nginx.conf
+#     dest: /etc/nginx/conf.d
+
+- name: reload
+  sudo: yes
+  command: systemctl reload nginx

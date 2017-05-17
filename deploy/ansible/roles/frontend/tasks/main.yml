@@ -1,0 +1,45 @@
+---
+#file: roles/api/tasks/main.yml
+
+- name: Make node group
+  group: name=node system=yes state=present
+
+- name: Make node user
+  user: name=node group=node system=yes state=present
+
+- name: Delete old app folder if exists
+  command: rm -rf /var/www/boilerplate
+
+- name: Make new app folder
+  file:
+    dest: /var/www/boilerplate
+    state: directory
+    owner: centos
+    group: centos
+
+- name: Download code
+  git:
+    dest: /var/www/boilerplate
+    repo: git@github.com:amida-tech/client-boilerplate.git
+    force: yes
+  sudo: no
+
+- name:  Install node-gyp
+  sudo: yes
+  command: npm install -g node-gyp
+
+- name: install libxml2
+  yum: name=libxml2 state="latest"
+  sudo: yes
+
+- name: Install frontend server dependencies
+  sudo: no
+  command: npm install --production -s chdir=/var/www/boilerplate
+
+- name: Build frontend
+  sudo: no
+  command: npm run build chdir=/var/www/boilerplate
+
+- name: Move build folder to nginx path
+  sudo: no
+  command: mv /var/www/boilerplate/build /var/www

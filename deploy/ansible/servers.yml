@@ -1,0 +1,12 @@
+---
+- hosts: all
+  max_fail_percentage: 49
+  serial: 1
+  sudo: yes
+  roles:
+   - common
+   - node
+   - nginx
+   - frontend
+  vars:
+    node_version: 6.10.0
