@@ -16,10 +16,10 @@
   sudo: yes
   command: systemctl enable nginx
 
-# - name: copy site conf file
-#   template:
-#     src: nginx.conf
-#     dest: /etc/nginx/conf.d
+- name: copy site conf file
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/conf.d
 
 - name: reload
   sudo: yes
