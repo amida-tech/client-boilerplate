@@ -20,8 +20,7 @@
 - name: Download code
   git:
     dest: /var/www/boilerplate
-    repo: git@github.com:amida-tech/client-boilerplate.git
-    accept_hostkey: yes
+    repo: https://github.com/amida-tech/client-boilerplate.git
     force: yes
 
 - name:  Install node-gyp
