@@ -19,7 +19,7 @@
 - name: copy site conf file
   template:
     src: nginx.conf
-    dest: /etc/nginx/nginx.conf
+    dest: /etc/nginx/conf.d
 
 - name: reload
   sudo: yes
