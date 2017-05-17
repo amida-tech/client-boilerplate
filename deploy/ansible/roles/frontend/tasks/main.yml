@@ -41,4 +41,4 @@
 
 - name: Move build folder to nginx path
   sudo: no
-  command: mv /var/www/boilerplate/build /var/www
+  command: rsync -av /var/www/boilerplate/build/ /var/www/
