@@ -33,7 +33,7 @@
 
 - name: Install frontend server dependencies
   sudo: no
-  command: npm install --production -s chdir=/var/www/boilerplate
+  command: npm install -s chdir=/var/www/boilerplate
 
 - name: Build frontend
   sudo: no
