@@ -21,6 +21,7 @@
   git:
     dest: /var/www/boilerplate
     repo: git@github.com:amida-tech/client-boilerplate.git
+    accept_hostkey: yes
     force: yes
   sudo: no
 
